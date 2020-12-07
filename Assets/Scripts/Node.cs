@@ -16,13 +16,17 @@ public abstract class Node : MonoBehaviour
         col = GetComponent<Collider>();   
     }
 
-     void OnMouseDown()
+    void OnMouseDown()
     {
+       
         Arrive ();
     }
 
     void Arrive()
     {
+        //leave existing currentNode
+        if (Game_Manager.ins.currentNode != null)
+            Game_Manager.ins.currentNode.Leave();
         //set current node
         Game_Manager.ins.currentNode = this;
         //move the camera
@@ -39,14 +43,16 @@ public abstract class Node : MonoBehaviour
                 node.col.enabled = true;
             }
         }
-        void Leave()
+        
+    }
+    void Leave()
+    { 
+        //turn off all node's reachable colliders.
+        foreach (Node node in reachableNodes)
         {
-            foreach (Node node in reachableNodes)
+            if (node.col != null)
             {
-                if (node.col != null)
-                {
-                    node.col.enabled = true;
-                }
+                node.col.enabled = false;
             }
         }
     }
