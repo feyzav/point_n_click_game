@@ -18,10 +18,9 @@ public abstract class Node : MonoBehaviour
     }
 
     void OnMouseDown()
-    {
-       
+    {       
         Arrive ();
-        print("on mouse down");
+      
     }
 
     public void Arrive()
@@ -35,7 +34,6 @@ public abstract class Node : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(Camera.main.transform.DOMove(cameraPosition.position, 1.0f));
         seq.Join(Camera.main.transform.DORotate(cameraPosition.rotation.eulerAngles, 1.0f));
-        print("clicked");
 
         //Camera.main.transform.position = cameraPosition.position;
         //Camera.main.transform.rotation = cameraPosition.rotation;
