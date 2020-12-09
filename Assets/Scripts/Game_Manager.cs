@@ -19,6 +19,7 @@ public class Game_Manager : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && currentNode.GetComponent<Prop>() != null)
         {
             currentNode.GetComponent<Prop>().loc.Arrive();
+            print("clicked");
         }
     }
 }
